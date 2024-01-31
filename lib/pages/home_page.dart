@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
 
 Category(
   name: 'All',
-  iconpath: Icon(Icons.badge),
+  iconpath: Icon(Icons.logout),
   ),
         ],
       ),
