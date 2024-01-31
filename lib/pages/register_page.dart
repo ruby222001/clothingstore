@@ -44,6 +44,8 @@ class _RegisterPageState extends State<RegisterPage> {
         // Show error message
         showErrorMessage("Passwords don't match");
       }
+            Navigator.pop(context);
+
     } on FirebaseAuthException catch (e) {
       // Pop loading circle
       Navigator.pop(context);
@@ -146,7 +148,6 @@ const SizedBox(height: 10),
                 // Sign up button
                 MyButton(
                   onTap: signUserUp,
-                  text: 'Sign up',
                 ),
 
                 const SizedBox(height: 20),

@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shoppingapp/models/my_button.dart';
 import 'package:shoppingapp/models/mytextfield.dart';
-
+import 'package:shoppingapp/pages/forgotpassword.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -28,12 +28,15 @@ class _LoginPageState extends State<LoginPage> {
           return const Center(
             child: CircularProgressIndicator(),
           );
-        });
+        },
+        );
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
       );
+            Navigator.pop(context);
+
     } on FirebaseAuthException catch (e) {
       //pop loading circle
       Navigator.pop(context);
@@ -68,14 +71,14 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-                              const SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               // logo
               const Icon(
                 Icons.lock,
                 size: 50,
               ),
-                const SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               // welcome back, you've been missed!
               Text(
@@ -85,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                   fontSize: 16,
                 ),
               ),
-const SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               // username textfield
               MyTextField(
@@ -94,7 +97,7 @@ const SizedBox(height: 20),
                 obscuretext: false,
               ),
 
-const SizedBox(height: 10),
+              const SizedBox(height: 10),
               // password textfield
               MyTextField(
                 controller: passwordController,
@@ -102,7 +105,7 @@ const SizedBox(height: 10),
                 obscuretext: true,
               ),
 
-const SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               // forgot password?
               Padding(
@@ -110,20 +113,32 @@ const SizedBox(height: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(
-                      'Forgot Password?',
-                      style: TextStyle(color: Colors.grey[600]),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return const Forgotpasswordpage();
+                            },
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'Forgot Password?',
+                        style: TextStyle(color: Colors.grey[600]),
+                      ),
                     ),
                   ],
                 ),
               ),
-const SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               // sign in button
               MyButton(
-                onTap: signUserIn, text: 'sign in',
+                onTap: signUserIn,
               ),
-const SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               // or continue with
               Padding(
@@ -144,7 +159,6 @@ const SizedBox(height: 10),
                       ),
                     ),
                     const SizedBox(height: 10),
-
                     Expanded(
                       child: Divider(
                         thickness: 0.5,
@@ -154,7 +168,7 @@ const SizedBox(height: 10),
                   ],
                 ),
               ),
-const SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               // google + apple sign in buttons
               const Row(
@@ -168,25 +182,25 @@ const SizedBox(height: 10),
 
               // not a member? register now
               Row(
-  mainAxisAlignment: MainAxisAlignment.center,
-  children: [
-    Text(
-      'Not a member?',
-      style: TextStyle(color: Colors.grey[700]),
-    ),
-    const SizedBox(width: 4),
-    GestureDetector(
-      onTap: widget.onTap,
-      child: const Text(
-        'Register now',
-        style: TextStyle(
-          color: Colors.blue,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    ),
-  ],
-)
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Not a member?',
+                    style: TextStyle(color: Colors.grey[700]),
+                  ),
+                  const SizedBox(width: 4),
+                  GestureDetector(
+                    onTap: widget.onTap,
+                    child: const Text(
+                      'Register now',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
