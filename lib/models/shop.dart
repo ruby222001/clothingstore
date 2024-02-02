@@ -7,4 +7,8 @@ class Shop{
     required this.productprice,
     required this.productimage,
   });
+  String get _productname => productname;
+  String get _productprice => productprice;
+  String get _productimage =>productimage;
+
 }

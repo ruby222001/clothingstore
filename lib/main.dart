@@ -2,7 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shoppingapp/firebase_options.dart';
 import 'package:shoppingapp/pages/auth_page.dart';
-import 'package:shoppingapp/pages/loginorregister.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

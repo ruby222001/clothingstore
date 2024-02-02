@@ -2,52 +2,74 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shoppingapp/models/category.dart';
 import 'package:shoppingapp/models/products.dart';
+import 'package:shoppingapp/models/shop.dart';
+import 'package:shoppingapp/pages/detailpage.dart';
 
 class HomePage extends StatelessWidget {
    HomePage({super.key});
 
+ final  List<Shop> productlist =[
+//jackets
+Shop(productname: 'Linen Blazer', productprice: '89.99', productimage: 'lib/images/abc.jpg'),
+Shop(productname: 'Linen Blazer', productprice: '89.99', productimage: 'lib/images/abc.jpg'),
+
+Shop(productname: 'Linen Blazer', productprice: '89.99', productimage: 'lib/images/abc.jpg'),
+
+Shop(productname: 'Linen Blazer', productprice: '89.99', productimage: 'lib/images/abc.jpg'),
+
+Shop(productname: 'Linen Blazer', productprice: '89.99', productimage: 'lib/images/abc.jpg'),
+
+//shoes
+
+
+ ];
+
 final user = FirebaseAuth.instance.currentUser!;
+
 void signUserOut(){
   FirebaseAuth.instance.signOut();
 }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       drawer: Drawer(
-        child: IconButton(onPressed: signUserOut, icon: Icon(Icons.logout),)
+        child: IconButton(onPressed: signUserOut, icon: const Icon(Icons.logout),)
       ),
       appBar: AppBar(),
-      body: Container(
-child:         Column(
-  children: [
-    Text(
-      'Categories',
-    style: TextStyle(
-      fontWeight: FontWeight.bold,
-      fontSize: 40,
-
-    ),),
-    Row(
-      
-      children: [
-        Category(categoryname: 'All'),
-        Category(categoryname: 'Jackets'),
-        Category(categoryname: 'Jeans'),
-      ],
-    ),
-
-    Container(
-      child: Column(
+      body: Column(
         children: [
+          const Text(
+            'Categories',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 40,
+      
+          ),),
+          const Row(
+            
+            children: [
+              Category(categoryname: 'All'),
+              Category(categoryname: 'Jackets'),
+              Category(categoryname: 'Jeans'),
+            ],
+          ),
+      
+        const SizedBox(height: 10),
+          Expanded(child: GridView.builder(
+            itemCount: 4,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2), 
+            itemBuilder:  (context,index) => ProductTile(
+          shop: productlist[index], onTap:(){Navigator.push(context,MaterialPageRoute(builder: (context)=> const DetailPage(),
+          ),
+          
+          );
+          },
+          ),
+          ),
+          ),
         ],
-      ),
-    )
-  ],
-),
-
-// category
-
       ),
     );
   }

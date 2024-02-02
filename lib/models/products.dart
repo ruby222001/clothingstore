@@ -1,39 +1,53 @@
+import 'package:flutter/material.dart';
 import 'package:shoppingapp/models/shop.dart';
 
-class Product{
+// ignore: must_be_immutable
+class ProductTile extends StatelessWidget {
+  void Function()? onTap;
+  final Shop shop;
+   ProductTile({super.key,
+  required this.shop,
+  required this.onTap,
+  });
 
- final  List<Shop> _product =[
-//jackets
-Shop(productname: 'Linen Blazer', productprice: '89.99', productimage: 'lib/images/a.jpg'),
-Shop(productname: 'Linen Blazer', productprice: '89.99', productimage: 'lib/images/a.jpg'),
-
-Shop(productname: 'Linen Blazer', productprice: '89.99', productimage: 'lib/images/a.jpg'),
-
-Shop(productname: 'Linen Blazer', productprice: '89.99', productimage: 'lib/images/a.jpg'),
-
-Shop(productname: 'Linen Blazer', productprice: '89.99', productimage: 'lib/images/a.jpg'),
-
-//shoes
-
-
- ];
-
- //user cart
- List<Shop> _usercart =[];
-
-
- List<Shop> get listofproduct => _product;
-  List<Shop> get usercart => _usercart;
-//add item tocart
-
-void additemtocart(Shop shop){
-_usercart.add(shop);
-}
-
-//remove
-
-void removefromcart(Shop shop){
-_usercart.remove(shop);
-
-}
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: Colors.red),
+        
+          child: Column(
+            children: [
+              Image.asset(shop.productimage,
+              height: 150,
+        
+              ),
+        const Icon(Icons.arrow_back),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                
+                children: [
+                  
+                  Text(shop.productname,
+                  style: const TextStyle(fontWeight: FontWeight.bold,
+                  ),
+                  ),
+                  Text(shop.productprice,
+                  style: const TextStyle(fontWeight: FontWeight.bold,
+                  ),
+                  ),
+                ],
+              ),
+            ),
+          ]),
+        ),
+      ),
+    );
+  }
 }
