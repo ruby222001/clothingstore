@@ -7,7 +7,7 @@ import 'package:shoppingapp/pages/cartpage.dart';
 import 'package:shoppingapp/pages/detailpage.dart';
 
 class HomePage extends StatefulWidget {
-   HomePage({super.key});
+   const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -55,11 +55,11 @@ void  productdetailspage(int index){
       appBar: AppBar(
         title: GestureDetector(
           onTap:(){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => CartPage(),
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const CartPage(),
             ),
             );
           },
-          child: Icon(Icons.shopping_bag),
+          child: const Icon(Icons.shopping_bag),
           ),
       ),
       body: Column(

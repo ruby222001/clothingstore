@@ -19,11 +19,12 @@ class ProductTile extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: Colors.red),
+          color: Colors.white),
         
           child: Column(
             children: [
-              Image.asset(shop.productimage,
+              Image.asset(
+                shop.productimage,
               height: 150,
         
               ),

@@ -10,6 +10,18 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  int quantityCount = 0;
+  void decrementQuantity(){
+    setState(() {
+      quantityCount--;
+    });
+  }
+
+   void incrementQuantity(){
+    setState(() {
+      quantityCount++;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -19,13 +31,29 @@ appBar: AppBar(
       body: Column(
 
         children:[
-          Expanded(child: ListView(
-children:[
-Image.asset(widget.shop.productname),
-
-]
-          ),
-          ),
+          Image.asset(widget.shop.productimage),
+          Text(widget.shop.productname),
+          Expanded(
+              child: Container(
+            child: Row(
+              children: [
+                Text(widget.shop.productprice),
+                IconButton(onPressed: incrementQuantity, icon: Icon(Icons.add),
+                ),
+                SizedBox(
+                  width: 40,
+                  child: Center(
+                    child: Text(quantityCount.toString(),style: TextStyle(color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    ),),
+                  ),
+                ),
+                                IconButton(onPressed: decrementQuantity, icon: Icon(Icons.remove),
+                                ),
+              ],
+            ),
+          ))
         ]
       )
     );
