@@ -44,7 +44,8 @@ void  productdetailspage(int index){
       ),
   );
 }
-
+int isselected=0;
+int currentIndex =0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,6 +63,7 @@ void  productdetailspage(int index){
           child: const Icon(Icons.shopping_bag),
           ),
       ),
+      
       body: Column(
         children: [
           const Text(
@@ -71,12 +73,16 @@ void  productdetailspage(int index){
             fontSize: 40,
       
           ),),
-          const Row(
-            
+           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Category(categoryname: 'All'),
-              Category(categoryname: 'Jackets'),
-              Category(categoryname: 'Jeans'),
+           Category(categoryname: "AllProducts", index: 0),
+          Category(categoryname: "Jackets", index: 1),
+
+           Category(categoryname: "Shoes", index: 2),
+
+           Category(categoryname: "Bags", index: 3),
+
             ],
           ),
       
@@ -93,6 +99,7 @@ void  productdetailspage(int index){
           ),
          ],
          ),
+        
           );
          
   }

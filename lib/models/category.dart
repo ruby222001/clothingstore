@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class Category extends StatelessWidget {
   final String categoryname;
+  final int index;
 
-  const Category({super.key, required this.categoryname,
+   Category({super.key, required this.categoryname,
+  required this.index,
   });
-
+int isSelected =0;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -17,7 +19,7 @@ class Category extends StatelessWidget {
             height: 50,
             width: 70,
             decoration: BoxDecoration(
-                color: Colors.grey,
+                color: isSelected == index ? Colors.red : Colors.red.shade300,
                  borderRadius: BorderRadius.circular(12)),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
