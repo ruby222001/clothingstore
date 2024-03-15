@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shoppingapp/models/category.dart';
+import 'package:shoppingapp/models/drawer.dart';
 import 'package:shoppingapp/models/products.dart';
 import 'package:shoppingapp/models/shop.dart';
 import 'package:shoppingapp/pages/cartpage.dart';
@@ -50,9 +51,7 @@ int currentIndex =0;
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      drawer: Drawer(
-        child: IconButton(onPressed: signUserOut, icon: const Icon(Icons.logout),)
-      ),
+      drawer: MyDrawer(),
       appBar: AppBar(
         title: GestureDetector(
           onTap:(){
