@@ -35,10 +35,12 @@ class _LoginPageState extends State<LoginPage> {
         email: emailController.text,
         password: passwordController.text,
       );
+            // ignore: use_build_context_synchronously
             Navigator.pop(context);
 
     } on FirebaseAuthException catch (e) {
       //pop loading circle
+      // ignore: use_build_context_synchronously
       Navigator.pop(context);
       //error message
       showErrorMessage(e.code);

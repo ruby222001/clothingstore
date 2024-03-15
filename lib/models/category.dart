@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Category extends StatelessWidget {
   final String categoryname;
   final int index;

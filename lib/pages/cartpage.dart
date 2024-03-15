@@ -6,7 +6,7 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return  const Scaffold(
       body: ListTile(
         title: Text('hello'),
         subtitle: Text('he'),

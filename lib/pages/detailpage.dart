@@ -3,7 +3,7 @@ import 'package:shoppingapp/models/shop.dart';
 
 class DetailPage extends StatefulWidget {
   final Shop shop;
-   DetailPage({super.key, required this.shop});
+   const DetailPage({super.key, required this.shop});
 
   @override
   State<DetailPage> createState() => _DetailPageState();
@@ -34,26 +34,24 @@ appBar: AppBar(
           Image.asset(widget.shop.productimage),
           Text(widget.shop.productname),
           Expanded(
-              child: Container(
-            child: Row(
-              children: [
-                Text(widget.shop.productprice),
-                IconButton(onPressed: incrementQuantity, icon: Icon(Icons.add),
-                ),
-                SizedBox(
-                  width: 40,
-                  child: Center(
-                    child: Text(quantityCount.toString(),style: TextStyle(color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    ),),
+              child: Row(
+                children: [
+                  Text(widget.shop.productprice),
+                  IconButton(onPressed: incrementQuantity, icon: const Icon(Icons.add),
                   ),
-                ),
-                                IconButton(onPressed: decrementQuantity, icon: Icon(Icons.remove),
-                                ),
-              ],
-            ),
-          ))
+                  SizedBox(
+                    width: 40,
+                    child: Center(
+                      child: Text(quantityCount.toString(),style: const TextStyle(color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      ),),
+                    ),
+                  ),
+                                  IconButton(onPressed: decrementQuantity, icon: const Icon(Icons.remove),
+                                  ),
+                ],
+              ))
         ]
       )
     );

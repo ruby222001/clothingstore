@@ -10,15 +10,15 @@ class MyDrawer extends StatelessWidget {
     return Drawer(
         child: Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 100.0),
+        const Padding(
+          padding: EdgeInsets.only(top: 100.0),
           child: Icon(
             Icons.lock_open_rounded,
             size: 80,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(25.0),
+        const Padding(
+          padding: EdgeInsets.all(25.0),
         ),
         MyDrawerTile(
             text: "H O M E",
@@ -28,7 +28,7 @@ class MyDrawer extends StatelessWidget {
             text: "S E T T I N G S ", icon: Icons.settings, onTap: (){
               Navigator.push(
                 context, MaterialPageRoute(
-                  builder: (context) => SettingsPage()
+                  builder: (context) => const SettingsPage()
                   ),
               );
             }),

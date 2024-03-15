@@ -19,6 +19,7 @@ class _ForgotpasswordpageState extends State<Forgotpasswordpage> {
   Future passwordReset() async{
    try{
      await FirebaseAuth.instance.sendPasswordResetEmail(email: _emailController.text.trim());
+ // ignore: use_build_context_synchronously
  showDialog(
   context: context, builder: (context){
       return const AlertDialog(
@@ -27,8 +28,10 @@ class _ForgotpasswordpageState extends State<Forgotpasswordpage> {
     });
   }
   on FirebaseAuthException catch (e) {
-    print(e);
-    showDialog(context: context, builder: (context){
+    // ignore: use_build_context_synchronously
+    showDialog(
+      context: context, 
+      builder: (context){
       return AlertDialog(
         content: Text(e.message.toString()),
       );
