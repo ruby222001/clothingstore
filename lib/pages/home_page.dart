@@ -56,7 +56,23 @@ SizedBox(height: 30),
         ),
       ],
       
-      body: Container(color: Colors.blue)
+      body:TabBarView(
+        controller: _tabController,
+        children:[
+          ListView.builder(itemBuilder: (context,index)=>const Text("first tab"),
+          itemCount: 5,
+          ),
+           ListView.builder(itemBuilder: (context,index)=>const Text("first tab"),
+          itemCount: 5,
+          ),
+           ListView.builder(itemBuilder: (context,index)=>const Text("first tab"),
+          itemCount: 5,
+          ), ListView.builder(itemBuilder: (context,index)=>const Text("first tab"),
+          itemCount: 5,
+          ),
+
+        ]
+      )
       )
         
           );
